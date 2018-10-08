@@ -1,0 +1,52 @@
+1.建立相应的包结构
+    <mirrors>
+        <mirror>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+2.配置文件：
+#定义初始连接数
+initialSize=0
+#定义最大连接数
+maxActive=20
+#定义最大空闲
+maxIdle=20
+#定义最小空闲
+minIdle=1
+#定义最长等待时间
+maxWait=60000
+
+3.在9月29号的搭建过程中出现了几个错误：
+错误一： sqlSessionFactory 的dataSource 没有用ref ,用的value
+错误二： mapper文件是放在java文件里的，没有配置resources
+ <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resource</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+ </resources>
+错误三：Idea在pom.xml中添加了mybatis-generator插件后，右侧的maven projects中并未显示这个插件?
+解决方法: 新建一个plugins标签和pluginManager同级，然后把generator插件配置放进去
+错误四：在页面的跳转中出现了中文乱码
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>  不会出现乱码
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">  html页面会出现乱码
+错误五：如果controller写的有问题，可能导致这个类的访问路径无效或没反应。
+错误六：Model和ModelMap
+错误七：取文本框的值document.getElementById("name").value
+
+简单的页面跳转
+综合页面跳转
+from表单
+注册登录
